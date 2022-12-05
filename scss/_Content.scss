@@ -1,0 +1,24 @@
+.custom__card-home {
+  & a {
+    text-decoration: none;
+    color: #000000;
+  }
+  & a:hover {
+    text-decoration: none;
+    opacity: 0.6;
+  }
+
+  & h3 {
+    color: #000;
+  }
+  & h5 {
+    color: #c94c04;
+  }
+  .custom__overflow {
+    height: auto;
+    overflow: hidden;
+  }
+  .react-share__ShareButton {
+    margin-right: 5px;
+  }
+}
