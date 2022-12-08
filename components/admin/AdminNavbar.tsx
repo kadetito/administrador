@@ -38,7 +38,7 @@ export const AdminNavbar = () => {
                   <Nav.Link onClick={() => navigateTo(`/admin/users`)}>
                     Usuarios
                   </Nav.Link>
-                  <Nav.Link onClick={() => navigateTo(`/admin/users`)}>
+                  <Nav.Link onClick={() => navigateTo(`/admin/articles`)}>
                     Artículos
                   </Nav.Link>
                 </Nav>

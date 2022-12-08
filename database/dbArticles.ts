@@ -40,7 +40,39 @@ export const getArticlesByTerm = async (term: string): Promise<IArticle[]> => {
 
   await db.disconnect();
 
-  return articles;
+  const updatedArticles = articles.map((article) => {
+    article.images = article.images.map((image) => {
+      return image.includes("http")
+        ? image
+        : `${process.env.HOSTNAME}articles/${image}`;
+    });
+    return article;
+  });
+
+  return updatedArticles;
+};
+
+export const getArticlesBySlug = async (
+  slug: string
+): Promise<IArticle | null> => {
+  await db.connect();
+  const article = await Article.findOne({
+    slug,
+  }).lean();
+
+  await db.disconnect();
+
+  if (!article) {
+    return null;
+  }
+
+  article.images = article.images.map((image) => {
+    return image.includes("http")
+      ? image
+      : `${process.env.HOSTNAME}articles/${image}`;
+  });
+
+  return JSON.parse(JSON.stringify(article));
 };
 
 export const getAllArticles = async (): Promise<IArticle[]> => {
@@ -48,5 +80,15 @@ export const getAllArticles = async (): Promise<IArticle[]> => {
   const articles = await Article.find().lean();
 
   await db.disconnect();
-  return JSON.parse(JSON.stringify(articles));
+
+  const updatedArticles = articles.map((article) => {
+    article.images = article.images.map((image) => {
+      return image.includes("http")
+        ? image
+        : `${process.env.HOSTNAME}articles/${image}`;
+    });
+    return article;
+  });
+
+  return JSON.parse(JSON.stringify(updatedArticles));
 };

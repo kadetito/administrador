@@ -3,7 +3,7 @@ export interface IArticle {
   content: string;
   images: string[];
   footImages: string[];
-  activated: number;
+  activated: "true" | "false";
   author: string;
   slug: string;
   tags: string[];

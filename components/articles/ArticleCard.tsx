@@ -20,7 +20,7 @@ export const ArticleCard: FC<Props> = ({ article }) => {
       <Col>
         <Card>
           <NextLink href={`/product/${article.slug}`} passHref prefetch={false}>
-            {article.activated === 0 && <Badge color="primary" />}
+            {article.activated === "false" && <Badge color="primary" />}
             {isImageLoaded && (
               <Card.Img
                 className="fadeIn"
